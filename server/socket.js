@@ -19,8 +19,10 @@ module.exports = function(io) {
                 socket.emit('game-created', { code });
                 console.log(`🎮 Partie créée: ${code}`);
             } catch (error) {
-                socket.emit('error', { message: 'Erreur lors de la création de la partie' });
-                console.error(error);
+                console.error('❌ Erreur lors de la création de la partie:', error);
+                socket.emit('error', { 
+                    message: 'Erreur lors de la création de la partie: ' + error.message 
+                });
             }
         });
 

@@ -4,7 +4,7 @@ const mysql = require('mysql2/promise');
 const dbConfig = {
     host: 'localhost',
     user: 'root',           // Modifier selon votre configuration
-    password: 'root',           // Modifier selon votre configuration
+    password: '',           // Modifier selon votre configuration
     database: 'trivia_game'
 };
 
@@ -48,3 +48,4 @@ module.exports = {
     getQuestionById,
     addQuestion
 };
+

@@ -6,12 +6,7 @@
 
 Application web de jeu de questions-réponses (trivia) multijoueur en temps réel. Les joueurs peuvent créer ou rejoindre des sessions de jeu via un code unique, répondre à des questions avec un chronomètre, et voir le classement se mettre à jour en direct.
 
-## 👥 Équipe
 
-| Nom | Prénom |
-|-----|--------|
-| [NOM] | [Prénom] |
-| [NOM] | [Prénom] |
 
 ## 🚀 Fonctionnalités
 

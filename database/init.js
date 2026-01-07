@@ -3,8 +3,8 @@ const mysql = require('mysql2/promise');
 // Configuration MySQL (sans base de données pour la création)
 const dbConfig = {
     host: 'localhost',
-    user: 'root',       // Modifier selon votre configuration
-    password: ''        // Modifier selon votre configuration
+    user: 'root',       
+    password: ''        
 };
 
 async function initDatabase() {
