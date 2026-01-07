@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Page d'accueil -->
+        <div id="home-screen" class="screen active">
+            <h1>🎮 Trivia Game</h1>
+            <p class="subtitle">Jeu de questions-réponses en temps réel</p>
+            
+            <div class="menu-buttons">
+                <button id="btn-create" class="btn btn-primary">Créer une partie</button>
+                <button id="btn-join" class="btn btn-secondary">Rejoindre une partie</button>
+            </div>
+        </div>
+
+        <!-- Écran de création de partie -->
+        <div id="create-screen" class="screen">
+            <h2>Créer une partie</h2>
+            
+            <div class="form-group">
+                <label for="nb-questions">Nombre de questions :</label>
+                <select id="nb-questions">
+                    <option value="5">5 questions</option>
+                    <option value="10" selected>10 questions</option>
+                    <option value="15">15 questions</option>
+                    <option value="20">20 questions</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="host-pseudo">Votre pseudo :</label>
+                <input type="text" id="host-pseudo" placeholder="Entrez votre pseudo" maxlength="20">
+            </div>
+            
+            <button id="btn-create-game" class="btn btn-primary">Créer la partie</button>
+            <button id="btn-back-create" class="btn btn-link">← Retour</button>
+        </div>
+
+        <!-- Écran pour rejoindre une partie -->
+        <div id="join-screen" class="screen">
+            <h2>Rejoindre une partie</h2>
+            
+            <div class="form-group">
+                <label for="game-code">Code de la partie :</label>
+                <input type="text" id="game-code" placeholder="Ex: ABC123" maxlength="6">
+            </div>
+            
+            <div class="form-group">
+                <label for="player-pseudo">Votre pseudo :</label>
+                <input type="text" id="player-pseudo" placeholder="Entrez votre pseudo" maxlength="20">
+            </div>
+            
+            <button id="btn-join-game" class="btn btn-primary">Rejoindre</button>
+            <button id="btn-back-join" class="btn btn-link">← Retour</button>
+        </div>
+
+        <!-- Écran du lobby -->
+        <div id="lobby-screen" class="screen">
+            <h2>Salle d'attente</h2>
+            
+            <div class="code-display">
+                <span>Code de la partie :</span>
+                <strong id="display-code"></strong>
+            </div>
+            
+            <div class="players-section">
+                <h3>Joueurs connectés (<span id="player-count">0</span>)</h3>
+                <ul id="players-list"></ul>
+            </div>
+            
+            <button id="btn-start-game" class="btn btn-primary" style="display: none;">
+                🚀 Lancer la partie
+            </button>
+            
+            <p id="waiting-message" class="info-message">En attente du lancement...</p>
+        </div>
+
+        <!-- Écran de jeu -->
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <span id="question-counter">Question 1/10</span>
+                <div class="timer">
+                    <span id="timer-display">10</span>s
+                </div>
+            </div>
+            
+            <div class="question-container">
+                <h2 id="question-text"></h2>
+                
+                <div class="answers-grid">
+                    <button class="answer-btn" data-answer="1"></button>
+                    <button class="answer-btn" data-answer="2"></button>
+                    <button class="answer-btn" data-answer="3"></button>
+                    <button class="answer-btn" data-answer="4"></button>
+                </div>
+            </div>
+            
+            <div class="answers-status">
+                <span id="answers-count">0</span>/<span id="total-players">0</span> ont répondu
+            </div>
+        </div>
+
+        <!-- Écran des résultats de question -->
+        <div id="result-screen" class="screen">
+            <h2>Résultat</h2>
+            
+            <div class="correct-answer">
+                <span>Bonne réponse :</span>
+                <strong id="correct-answer-text"></strong>
+            </div>
+            
+            <div class="ranking-section">
+                <h3>Classement</h3>
+                <ol id="ranking-list"></ol>
+            </div>
+            
+            <p class="info-message">Question suivante dans quelques secondes...</p>
+        </div>
+
+        <!-- Écran de fin de partie -->
+        <div id="end-screen" class="screen">
+            <h2>🏆 Fin de la partie !</h2>
+            
+            <div class="final-ranking">
+                <h3>Classement final</h3>
+                <ol id="final-ranking-list"></ol>
+            </div>
+            
+            <button id="btn-home" class="btn btn-primary">Retour à l'accueil</button>
+        </div>
+    </div>
+
+    <!-- Message d'erreur -->
+    <div id="error-toast" class="toast"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
